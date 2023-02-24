@@ -1,14 +1,24 @@
 import React,{useEffect,useState} from 'react';
-import Characters from './Characters';
 import style from './App.css'
+import Cards from './Cards/Cards'
+import Pagination from './Pagination/Pagination';
+import Search from './Search.js/Search';
+
+
+ 
 
 
 
 const App = () => {
-  const [posts, setPosts] = useState([]);
-  const [search,setSearch] = useState("")
-   useEffect(() => {
-      fetch("https://rickandmortyapi.com/api/character")
+  let [posts, setPosts] = useState([]);
+  let [search,setSearch] = useState("")
+  let [pageNumber,setPageNumber] = useState(1)
+  let {info , results} = posts;
+  
+  let api = (`https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}`)
+  
+   useEffect(() => {  
+      fetch(api)
          .then((response) => response.json())
          .then((data) => {
             console.log(data.results);
@@ -17,40 +27,28 @@ const App = () => {
          .catch((err) => {
             console.log(err.message);
          });
-   }, []);
+   }, [api]);
  
    const changeHandler = (event) => {
       setSearch(event.target.value)
 
    }
 
-   const SerchCharacter = posts.filter(post => post.name.toLowerCase().includes(search.toLowerCase()) )
    
   return (
      
 
-    <>
-<input className="search" type="search" placeholder="Search..." value={search} onChange={changeHandler}   />
+<div className={style.cards}>
+   <Search setPageNumber={setPageNumber } setSearch={setSearch } />
+<div className={style.card}>
+<Cards posts={posts}  /> 
+</div>
 
 
-    {
-       SerchCharacter.map(post => <Characters 
-         key={post.id}
-         name={post.name}
-         species={post.species}
-         status={post.status}
-         image={post.image}
+<Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} info={info} />
+  
        
-       
-       
-       
-       
-       />)
-    }
-   
-    
-       
-    </>
+    </div>
   );
 };
 
