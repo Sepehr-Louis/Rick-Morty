@@ -1,0 +1,23 @@
+.btn{
+    background-color: #5AB1BB;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color:cornsilk;
+}
+.item{
+    background-color: #4b7479;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color:cornsilk;
+
+}
+.active{
+    color:brown;
+    background-color: brown;
+
+}
+.btn:focus{
+    background-color: brown;
+}

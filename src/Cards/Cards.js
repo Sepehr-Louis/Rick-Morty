@@ -4,9 +4,9 @@ const Cards = ({posts,results}) => {
     
     let display;
 console.log(posts)
-
-    if (posts) {
-        display = posts.map((x) => {
+return (
+    <div className={style.cardsContainer}>
+        {posts && posts.map((x) => {
             let { id , name , image , location,status } = x;
             return <div className={style.Cards} key={id} >
                 <div className={style.card}  >
@@ -18,27 +18,10 @@ console.log(posts)
                             <div className="" style={{fontSize:"18px"}}>Last location</div>
                             <div className="" style={{fontSize:"20px"}}>{location.name}</div>
                         </div>
-                    </div>{( () =>{
-                        if(status === "Dead"){
-                            return(
-                            <div className={style.badge}>{status}</div>)
-                            
-                        }
-                        else if (status === "Alive"){
-                            return(
-                                <div className={style.badge2}>{status}</div>
-                            )
-                          
-                        }
-                        else{ 
-                            return(
-                                <div className={style.badge3}>{status}</div>
-                            );
-                       }
-                    })()}
-        
-                    
-                   
+                    </div>
+                    {status === "Dead" &&  <div className={style.badge}>{status}</div> }
+                    {status === "Alive" &&  <div className={style.badge2}>{status}</div> }
+                    {(status !== "Dead" && status !== "Alive") &&  <div className={style.badge3}>{status}</div> }
                 </div>  
                 </div>
               
@@ -49,15 +32,7 @@ console.log(posts)
         })
 
     } 
-    else{
-        display = "No Characters Found"
-
+    </div>
+)
     }
-    return (
-        <div>
-            {display}
-        </div>
-    );
-};
-
 export default Cards;

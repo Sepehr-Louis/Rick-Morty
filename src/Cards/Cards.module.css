@@ -1,26 +1,22 @@
+.cardsContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 10px;
+}
 .Cards{
-    
+    flex-basis: 30%;
     text-align: center;
     align-items: center;
-    
-    display: flex;
-    flex-wrap: wrap;
-    
-   
+    width: 100% !important;    
 }
-.card{
-    display: flex;
-    
-}
-.image img{
-    width: 290px;
-    
-    
-}
+
 .image{
     position: relative;
-    border:rgb(25, 54, 18) 5px solid;
+    border:rgb(0, 0, 0) 5px solid;
     margin-top: 10px;
+    border-radius: 10px;
     
 }
 

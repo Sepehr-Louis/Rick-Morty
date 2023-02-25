@@ -69,5 +69,5 @@ color:cornsilk;
   flex-direction: column;
 }
 .card{
-  flex-direction: row;
+ display: flex;
 }

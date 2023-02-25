@@ -21,8 +21,8 @@ const App = () => {
       fetch(api)
          .then((response) => response.json())
          .then((data) => {
-            console.log(data.results);
-            setPosts(data.results);
+            console.log(data);
+            setPosts(data);
          })
          .catch((err) => {
             console.log(err.message);
@@ -39,9 +39,10 @@ const App = () => {
      
 
 <div className={style.cards}>
+
    <Search setPageNumber={setPageNumber } setSearch={setSearch } />
 <div className={style.card}>
-<Cards posts={posts}  /> 
+<Cards posts={posts.results}  /> 
 </div>
 
 
@@ -51,5 +52,5 @@ const App = () => {
     </div>
   );
 };
-
+   
 export default App;

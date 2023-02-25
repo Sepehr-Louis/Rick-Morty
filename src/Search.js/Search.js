@@ -5,7 +5,7 @@ const Search = ({setSearch,setPageNumber}) => {
         
             <form className={styles.Search}>
                 <input onChange={(e) =>{
-                  
+                  setPageNumber(1)
                     setSearch(e.target.value)
                 }}
                 
